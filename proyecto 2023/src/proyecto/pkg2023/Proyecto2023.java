@@ -1,9 +1,70 @@
 package proyecto.pkg2023;
 
+import java.util.Scanner;
+
 public class Proyecto2023 {
+
+    static contacto contactos[] = new contacto[15];
+    static int num = 0;
 
     public static void main(String[] args) {
 
+        int op = 0;
+        Scanner teclado = new Scanner(System.in);
+
+        while (op != 4) {
+            System.out.println("--------------------");
+            System.out.println("|       MENU      |");
+            System.out.println("1. Guardar Contacto");
+            System.out.println("2. Ver Todos los Contactos");
+            System.out.println("3. Buscar un Contacto");
+            System.out.println("4. Salir");
+            System.out.println("--------------------");
+            System.out.println("Ingrese el Numero de Opcion");
+            op = teclado.nextInt();
+            if (op == 1) {
+                guardarContacto();
+            } else if (op == 2) {
+                System.out.println("-----Los Datos de los Contactos son: -----");
+                verTodos();
+            } else if (op == 3) {
+             System.out.println("-------Buscar Contacto-------");
+                
+            } else if (op == 4) {
+                System.out.println("Programa Finalizado");
+            } else {
+                System.out.println("Opcion Incorrecta");
+            }
+        }
+    }
+
+    static public void guardarContacto() {
+        if (num >= 15) {
+            System.out.println("-------->La Memoria esta Llena<--------");
+        } else {
+            Scanner teclado = new Scanner(System.in);
+            System.out.println("---------Nuevo Contacto----------");
+            System.out.println("Ingrese el Telefono de la Persona");
+            String telefono = teclado.nextLine();
+            System.out.println("Ingrese el Nombre de la Persona");
+            String nombre = teclado.nextLine();
+            System.out.println("Ingrese el Domicilio de la Persona");
+            String domicilio = teclado.nextLine();
+            contactos[num] = new contacto(telefono, nombre, domicilio);
+            System.out.println("------------------------------");
+            System.out.println("Dato Almacenado");
+            System.out.println("------------------------------");
+            num++;
+        }
+    }
+
+    static public void verTodos() {
+        for (int i = 0; i < num; i++) {
+            System.out.println("Telefono: " + contactos[i].verTelefono());
+            System.out.println("Nombre: " + contactos[i].verNombre());
+            System.out.println("Domicilio: " + contactos[i].verDomicilio());
+            System.out.println("##################################");
+        }
     }
 
 }
