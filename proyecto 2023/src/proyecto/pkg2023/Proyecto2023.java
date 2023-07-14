@@ -36,7 +36,11 @@ public class Proyecto2023 {
                 System.out.println(verContacto(numero));
 
             } else if (op == 4) {
-
+            System.out.println("-------Actualizar Contacto-------");
+                System.out.println("Ingrese el Numero de telefono: ");
+                Scanner sd = new Scanner(System.in);
+                String numero = sd.nextLine();
+                System.out.println(actualizarContacto(numero));
             } else if (op == 5) {
                 System.out.println("Programa Finalizado");
             } else {
@@ -45,10 +49,10 @@ public class Proyecto2023 {
         }
     }
 
-    static public String actualizarContacto() {
+    static public String actualizarContacto(String telefono) {
         Scanner sr = new Scanner(System.in);
         int posicion = -1;
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 15; i++) {
             if (contactos[i] != null) {
             }
             if (contactos[i].verTelefono().equals(telefono)) {
