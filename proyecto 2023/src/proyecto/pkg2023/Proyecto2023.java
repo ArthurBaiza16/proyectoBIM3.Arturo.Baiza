@@ -28,13 +28,36 @@ public class Proyecto2023 {
                 System.out.println("-----Los Datos de los Contactos son: -----");
                 verTodos();
             } else if (op == 3) {
-             System.out.println("-------Buscar Contacto-------");
-                
+                System.out.println("-------Buscar Contacto-------");
+                System.out.println("Ingrese el Numero: ");
+                Scanner sd = new Scanner(System.in);
+                String numero = sd.nextLine();
+                System.out.println(verContacto(numero));
+
             } else if (op == 4) {
                 System.out.println("Programa Finalizado");
             } else {
                 System.out.println("Opcion Incorrecta");
             }
+        }
+    }
+
+    static public String verContacto(String numero) {
+        int posicion = -1;
+        for (int i = 0; i < 10; i++) {
+            if (contactos[i] != null) {
+
+            }
+            if (contactos[i].verTelefono().equals(numero) && contactos != null) {
+                posicion = i;
+                break;
+            }
+        }
+        if (posicion != -1) {
+            return "Nombre: " + contactos[posicion].verNombre()+ " Domicilio: " + contactos[posicion].verDomicilio();
+
+        } else {
+            return "Contacto no Encontrado";
         }
     }
 
@@ -52,7 +75,7 @@ public class Proyecto2023 {
             String domicilio = teclado.nextLine();
             contactos[num] = new contacto(telefono, nombre, domicilio);
             System.out.println("------------------------------");
-            System.out.println("Dato Almacenado");
+            System.out.println("Contacto Almacenado");
             System.out.println("------------------------------");
             num++;
         }
