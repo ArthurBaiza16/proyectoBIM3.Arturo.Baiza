@@ -12,13 +12,14 @@ public class Proyecto2023 {
         int op = 0;
         Scanner teclado = new Scanner(System.in);
 
-        while (op != 4) {
+        while (op != 5) {
             System.out.println("--------------------");
             System.out.println("|       MENU      |");
             System.out.println("1. Guardar Contacto");
             System.out.println("2. Ver Todos los Contactos");
             System.out.println("3. Buscar un Contacto");
-            System.out.println("4. Salir");
+            System.out.println("4. Actualizar Contacto");
+            System.out.println("5. Salir");
             System.out.println("--------------------");
             System.out.println("Ingrese el Numero de Opcion");
             op = teclado.nextInt();
@@ -29,16 +30,43 @@ public class Proyecto2023 {
                 verTodos();
             } else if (op == 3) {
                 System.out.println("-------Buscar Contacto-------");
-                System.out.println("Ingrese el Numero: ");
+                System.out.println("Ingrese el Numero de telefono: ");
                 Scanner sd = new Scanner(System.in);
                 String numero = sd.nextLine();
                 System.out.println(verContacto(numero));
 
             } else if (op == 4) {
+
+            } else if (op == 5) {
                 System.out.println("Programa Finalizado");
             } else {
-                System.out.println("Opcion Incorrecta");
+                System.out.println("OPCION INCORRECTA");
             }
+        }
+    }
+
+    static public String actualizarContacto() {
+        Scanner sr = new Scanner(System.in);
+        int posicion = -1;
+        for (int i = 0; i < 10; i++) {
+            if (contactos[i] != null) {
+            }
+            if (contactos[i].verTelefono().equals(telefono)) {
+                
+                System.out.println("Ingrese Nuevo Nombre");
+                String nombre = sr.nextLine();
+                contactos[i].setNombre(nombre);
+                System.out.println("Ingrese Nuevo Domicilio");
+                String domicilio = sr.nextLine();
+                contactos[i].setDomicilio(domicilio);
+                posicion = i;
+                break;
+            }
+        }
+        if (posicion != -1) {
+            return "Nombre: " + contactos[posicion];
+        } else {
+            return "Contacto no Encontrado";
         }
     }
 
@@ -54,7 +82,7 @@ public class Proyecto2023 {
             }
         }
         if (posicion != -1) {
-            return "Nombre: " + contactos[posicion].verNombre()+ " Domicilio: " + contactos[posicion].verDomicilio();
+            return "Nombre: " + contactos[posicion].verNombre() + " Domicilio: " + contactos[posicion].verDomicilio();
 
         } else {
             return "Contacto no Encontrado";
@@ -67,7 +95,7 @@ public class Proyecto2023 {
         } else {
             Scanner teclado = new Scanner(System.in);
             System.out.println("---------Nuevo Contacto----------");
-            System.out.println("Ingrese el Telefono de la Persona");
+            System.out.println("Ingrese el numero de Telefono de la Persona");
             String telefono = teclado.nextLine();
             System.out.println("Ingrese el Nombre de la Persona");
             String nombre = teclado.nextLine();
