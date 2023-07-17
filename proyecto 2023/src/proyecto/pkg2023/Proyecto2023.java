@@ -47,7 +47,7 @@ public class Proyecto2023 {
                 System.out.println("OPCION INCORRECTA");
             }
         }
-    }
+    }      
 
     static public String actualizarContacto(String telefono) {
         Scanner sr = new Scanner(System.in);
@@ -68,7 +68,7 @@ public class Proyecto2023 {
             }
         }
         if (posicion != -1) {
-            return "Nombre: " + contactos[posicion];
+            return "Contacto Actualizado";
         } else {
             return "Contacto no Encontrado";
         }
